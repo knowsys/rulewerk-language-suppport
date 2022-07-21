@@ -1,0 +1,102 @@
+{
+    "name": "vscode-rulewerk",
+    "displayName": "Rulewerk",
+    "description": "Rulewerk language support",
+    "version": "0.0.1",
+    "scripts": {
+        "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+        "build": "npm run esbuild-base -- --sourcemap",
+        "watch": "npm run esbuild-base -- --sourcemap --watch",
+        "test-compilation": "tsc -p ./",
+        "vscode:prepublish": "npm run esbuild-base -- --minify",
+        "lint": "npm run lint-eslint && npm run lint-prettier",
+        "lint-prettier": "prettier --ignore-path .gitignore --loglevel warn --write \"**/*.{json,md,ts,yml}\"",
+        "lint-eslint": "eslint src --ext ts",
+        "package": "npm run build && vsce package --pre-release"
+    },
+    "main": "./out/main.js",
+    "engines": {
+        "vscode": "^1.69.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "activationEvents": [
+        "onLanguage:rulewerk",
+        "onCommand:rulewerk.runInTerminal"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "rulewerk",
+                "aliases": [
+                    "Rulewerk Datalog",
+                    "rulewerk"
+                ],
+                "extensions": [
+                    "rls"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "rulewerk",
+                "scopeName": "source.rulewerk",
+                "path": "./syntaxes/rulewerk.tmLanguage.json"
+            }
+        ],
+        "commands": [
+            {
+                "command": "rulewerk.runInTerminal",
+                "title": "Run Rulework program",
+                "category": "Rulewerk",
+                "icon": "$(play)"
+            }
+        ],
+        "menus": {
+            "editor/title/run": [
+                {
+                    "group": "navigation@0",
+                    "when": "resourceLangId == rulewerk",
+                    "command": "rulewerk.runInTerminal"
+                }
+            ]
+        },
+        "configuration": {
+            "title": "Rulewerk",
+            "properties": {
+                "rulewerk.rulewerkClientPath": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "default": null,
+                    "description": "Path to an external Rulewerk client JAR file (`org.semanticweb.rulewerk-client`). Used for running Rulewerk files in the terminal. Defaults to the Rulewerk client shipped by the extension."
+                },
+                "rulewerk.javaPath": {
+                    "type": "string",
+                    "default": "java",
+                    "description": "Path to Java runtime executable. This setting can be used if the directory containing the `java` executable is not in the `PATH` environment variable."
+                }
+            }
+        }
+    },
+    "dependencies": {
+        "vscode-languageclient": "^8.0.2"
+    },
+    "devDependencies": {
+        "@types/node": "^18.0.6",
+        "@types/vscode": "^1.69.0",
+        "@typescript-eslint/eslint-plugin": "^5.30.6",
+        "@typescript-eslint/parser": "^5.30.6",
+        "esbuild": "^0.14.49",
+        "eslint": "^8.20.0",
+        "prettier": "^2.7.1",
+        "vsce": "^2.9.3"
+    },
+    "prettier": {
+        "trailingComma": "es5",
+        "tabWidth": 4
+    }
+}

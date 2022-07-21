@@ -1,0 +1,6 @@
+/.vscode/**
+!/.vscode/launch.json
+/node_modules
+/out
+/libs
+/*.vsix

@@ -1,0 +1,172 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Rulewerk Datalog",
+    "patterns": [
+        {
+            "include": "#head"
+        },
+        {
+            "include": "#body"
+        }
+    ],
+    "repository": {
+        "head": {
+            "name": "meta.structure.head",
+            "begin": "^",
+            "end": ":",
+            "patterns": [
+                {
+                    "include": "#atom"
+                },
+                {
+                    "include": "#comma"
+                }
+            ]
+        },
+        "body": {
+            "name": "meta.structure.body",
+            "begin": "-",
+            "end": "\\.",
+            "patterns": [
+                {
+                    "include": "#atom"
+                },
+                {
+                    "include": "#comma"
+                }
+            ]
+        },
+        "atom": {
+            "name": "meta.structure.atom",
+            "patterns": [
+                {
+                    "include": "#positive_atom"
+                },
+                {
+                    "include": "#negative_atom"
+                }
+            ]
+        },
+        "positive_atom": {
+            "name": "meta.structure.atom.positive",
+            "patterns": [
+                {
+                    "include": "#predicate_name"
+                },
+                {
+                    "include": "#predicate_arguments"
+                }
+            ]
+        },
+        "negative_atom": {
+            "name": "meta.structure.atom.negative",
+            "patterns": [
+                {
+                    "include": "#atom_negation"
+                },
+                {
+                    "include": "#positive_atom"
+                }
+            ]
+        },
+        "atom_negation": {
+            "name": "keyword.operator.rulewerk.negation",
+            "match": "~"
+        },
+        "predicate_name": {
+            "name": "entity.name.function.rulewerk",
+            "match": "[a-zA-Z][a-zA-Z0-9]*"
+        },
+        "predicate_arguments": {
+            "name": "meta.function.parameters.rulewerk",
+            "begin": "\\(",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.parenthesis.open.rulewerk"
+                }
+            },
+            "end": "\\)",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.parenthesis.close.rulewerk"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#term"
+                },
+                {
+                    "include": "#comma"
+                }
+            ]
+        },
+        "term": {
+            "patterns": [
+                {
+                    "include": "#variable"
+                },
+                {
+                    "include": "#ground_term"
+                }
+            ]
+        },
+        "variable": {
+            "patterns": [
+                {
+                    "include": "#existential_variable"
+                },
+                {
+                    "include": "#universal_variable"
+                }
+            ]
+        },
+        "existential_variable": {
+            "patterns": [
+                {
+                    "include": "#existential_marker"
+                },
+                {
+                    "include": "#variable_name"
+                }
+            ]
+        },
+        "universal_variable": {
+            "patterns": [
+                {
+                    "include": "#universal_marker"
+                },
+                {
+                    "include": "#variable_name"
+                }
+            ]
+        },
+        "existential_marker": {
+            "name": "keyword.operator.rulewerk.existential",
+            "match": "\\!"
+        },
+        "universal_marker": {
+            "name": "keyword.operator.rulewerk.universal",
+            "match": "\\?"
+        },
+        "variable_name": {
+            "name": "variable.rulewerk",
+            "match": "[a-zA-Z][a-zA-Z0-9]*"
+        },
+        "ground_term": {
+            "patterns": [
+                {
+                    "include": "#numeric_literal"
+                }
+            ]
+        },
+        "numeric_literal": {
+            "name": "constant.numeric.rulewerk",
+            "match": "[+-]?([0-9]+|[0-9]*\\.[0-9]+)"
+        },
+        "comma": {
+            "name": "punctuation.separator.parameters.rulewerk",
+            "match": ","
+        }
+    },
+    "scopeName": "source.rulewerk"
+}
