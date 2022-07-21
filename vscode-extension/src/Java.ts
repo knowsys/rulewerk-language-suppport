@@ -38,24 +38,39 @@ export class Java {
      * Validates that Java is installed.
      */
     public validateInstallation() {
-        const process = spawn(this.getPathToJavaExecutable(), ["--version"], {
-            timeout: 1,
-        });
+        try {
+            const process = spawn(
+                this.getPathToJavaExecutable(),
+                ["--version"],
+                {
+                    timeout: 10000,
+                }
+            );
 
-        process.once("error", (error) => {
+            process.once("error", (error) => {
+                this.logger.logErrorAndShowToUser(
+                    "Error while checking Java installation",
+                    error
+                );
+            });
+            process.once("exit", (code, signal) => {
+                if (code === 0) {
+                    return;
+                }
+                this.logger.logErrorAndShowToUser(
+                    `Non-zero exit code while checking Java installation: ${code}` +
+                        signal ===
+                        null
+                        ? ""
+                        : ` (signal ${signal})`,
+                    { code, signal }
+                );
+            });
+        } catch (error) {
             this.logger.logErrorAndShowToUser(
-                "Error while checking Java version",
+                "Could not start Java, is it installed?",
                 error
             );
-        });
-        process.once("exit", (code) => {
-            if (code === 0) {
-                return;
-            }
-            this.logger.logErrorAndShowToUser(
-                "Non-zero exit code while checking Java version",
-                code
-            );
-        });
+        }
     }
 }
