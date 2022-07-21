@@ -14,7 +14,6 @@
 
 import * as vscode from "vscode";
 import { Java } from "../Java";
-import { Logger } from "../Logger";
 import { Command } from "./Command";
 
 export class RunInTerminalCommand extends Command {
@@ -31,20 +30,6 @@ export class RunInTerminalCommand extends Command {
     }
 
     public run() {
-        const logger = new Logger();
-        try {
-            this.runRulewerkInTerminal();
-        } catch (error) {
-            logger.logErrorAndShowToUser(
-                "Failed to activate Rulewerk extension",
-                error
-            );
-            // Propagate error
-            throw error;
-        }
-    }
-
-    public runRulewerkInTerminal() {
         const rulewerkClientPath = this.getRulewerkClientPath();
 
         const shellPath = this.java.getPathToJavaExecutable();
