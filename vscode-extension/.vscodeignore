@@ -1,5 +1,8 @@
-/.vscode
-/node_modules
-
-/.eslintrc
-/.gitignore
+# Absolute paths do not seem to work
+.vscode
+node_modules
+src
+.eslintrc
+.gitignore
+tsconfig.json
+*.vsix
