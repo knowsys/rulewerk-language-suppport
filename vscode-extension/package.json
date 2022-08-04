@@ -54,7 +54,7 @@
         "commands": [
             {
                 "command": "rulewerk.runInTerminal",
-                "title": "Run Rulework program",
+                "title": "Run Rulewerk",
                 "category": "Rulewerk",
                 "icon": "$(play)"
             }
