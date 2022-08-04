@@ -10,8 +10,8 @@ This VS Code extension provides language support for Rulewerk files (`.rls`).
 ## Installation instructions
 
 -   Install the VS Code editor extension
--   Install the Java runtime environment 16 or newer on your system
-    -   Minimum required version is Java 16 (Standard Edition)
+-   Install the Java runtime environment on your system
+    -   The minimum required version is Java 16 (Standard Edition)
     -   Ensure the `java` command is available through the `PATH` environment variable, or configure `rulewerk.javaPath` in the extension setting
 
 ## Extension Settings
