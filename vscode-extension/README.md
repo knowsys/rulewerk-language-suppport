@@ -27,4 +27,4 @@ Overview of extension settings (see the settings page of your editor for additio
 
 ### Building the extension
 
--   Ensure that suitable version of `org.semanticweb.rulewerk-client` from https://github.com/knowsys/rulewerk/releases/ can be found at `vscode-extension/libs/rulewerk-client.jar`. This can either be a [released version](https://github.com/knowsys/rulewerk/releases) or a self-built [snaphsot version](https://github.com/knowsys/rulewerk/wiki/Standalone-client#compilation).
+-   Ensure that suitable version of `org.semanticweb.rulewerk-client` can be found at `vscode-extension/libs/rulewerk-client.jar`. This can either be a [released version](https://github.com/knowsys/rulewerk/releases) or a self-built [snaphsot version](https://github.com/knowsys/rulewerk/wiki/Standalone-client#compilation).
