@@ -117,14 +117,8 @@
             ]
         },
         "existential_variable": {
-            "patterns": [
-                {
-                    "include": "#existential_marker"
-                },
-                {
-                    "include": "#variable_name"
-                }
-            ]
+            "name": "keyword.control.rulewerk.existential",
+            "match": "\\![a-zA-Z][a-zA-Z0-9]*"
         },
         "universal_variable": {
             "patterns": [
