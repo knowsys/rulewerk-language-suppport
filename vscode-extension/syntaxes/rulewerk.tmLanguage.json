@@ -6,43 +6,13 @@
             "include": "#lineComment"
         },
         {
-            "include": "#head"
-        },
-        {
-            "include": "#body"
+            "include": "#atom"
         }
     ],
     "repository": {
         "lineComment": {
             "name": "comment.line.percentage",
             "match": "%(.)*\n"
-        },
-
-        "head": {
-            "name": "meta.structure.head",
-            "begin": "^",
-            "end": ":",
-            "patterns": [
-                {
-                    "include": "#atom"
-                },
-                {
-                    "include": "#comma"
-                }
-            ]
-        },
-        "body": {
-            "name": "meta.structure.body",
-            "begin": "-",
-            "end": "\\.",
-            "patterns": [
-                {
-                    "include": "#atom"
-                },
-                {
-                    "include": "#comma"
-                }
-            ]
         },
         "atom": {
             "name": "meta.structure.atom",
@@ -83,12 +53,19 @@
         },
 
         "predicate_name": {
-            "name": "entity.name.function.rulewerk",
             "patterns": [
                 {
                     "include": "#pred_name"
+                },
+                {
+                    "include": "#IRIREF"
                 }
             ]
+        },
+
+        "IRIREF": {
+            "name": "entity.name.function.IRI.rulewerk",
+            "match": "<([^><\"{}^\\|`\u0000-\u0020])*>"
         },
 
         "pred_name": {
