@@ -3,6 +3,9 @@
     "name": "Rulewerk Datalog",
     "patterns": [
         {
+            "include": "#lineComment"
+        },
+        {
             "include": "#head"
         },
         {
@@ -10,6 +13,11 @@
         }
     ],
     "repository": {
+        "lineComment": {
+            "name": "comment.line.percentage",
+            "match": "%(.)*\n"
+        },
+
         "head": {
             "name": "meta.structure.head",
             "begin": "^",
@@ -73,10 +81,21 @@
             "name": "keyword.operator.rulewerk.negation",
             "match": "~"
         },
+
         "predicate_name": {
+            "name": "entity.name.function.rulewerk",
+            "patterns": [
+                {
+                    "include": "#pred_name"
+                }
+            ]
+        },
+
+        "pred_name": {
             "name": "entity.name.function.rulewerk",
             "match": "[a-zA-Z][a-zA-Z0-9]*"
         },
+
         "predicate_arguments": {
             "name": "meta.function.parameters.rulewerk",
             "begin": "\\(",
