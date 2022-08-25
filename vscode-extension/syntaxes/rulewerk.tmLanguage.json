@@ -7,6 +7,9 @@
         },
         {
             "include": "#atom"
+        },
+        {
+            "include": "#sourceDeclaration"
         }
     ],
     "repository": {
@@ -14,6 +17,21 @@
             "name": "comment.line.percentage",
             "match": "%(.)*\n"
         },
+        "sourceDeclaration" : {
+            "begin": "@source",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.rulewerk"
+                }
+            },
+            "end": ".",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.statement.end.rulewerk"
+                }
+            }
+        },
+
         "atom": {
             "name": "meta.structure.atom",
             "patterns": [
