@@ -121,14 +121,8 @@
             "match": "\\![a-zA-Z][a-zA-Z0-9]*"
         },
         "universal_variable": {
-            "patterns": [
-                {
-                    "include": "#universal_marker"
-                },
-                {
-                    "include": "#variable_name"
-                }
-            ]
+            "name": "variable.rulewerk",
+            "match": "\\?[a-zA-Z][a-zA-Z0-9]*"
         },
         "existential_marker": {
             "name": "keyword.operator.rulewerk.existential",
