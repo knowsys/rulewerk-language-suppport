@@ -12,6 +12,9 @@
             "include": "#baseDeclaration"
         },
         {
+            "include": "#prefixDeclaration"
+        },
+        {
             "include": "#sourceDeclaration"
         }
     ],
@@ -20,6 +23,23 @@
             "name": "comment.line.percentage",
             "match": "%(.)*\n"
         },
+        
+        "prefixDeclaration": {
+            "begin": "@prefix",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.rulewerk"
+                }
+            },
+            "patterns": [{ "include": "#IRIREF" }],
+            "end": ".",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.statement.end.rulewerk"
+                }
+            }
+        },
+
         "baseDeclaration": {
             "begin": "@base",
             "beginCaptures": {
