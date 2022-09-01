@@ -9,6 +9,9 @@
             "include": "#atom"
         },
         {
+            "include": "#baseDeclaration"
+        },
+        {
             "include": "#sourceDeclaration"
         }
     ],
@@ -17,7 +20,23 @@
             "name": "comment.line.percentage",
             "match": "%(.)*\n"
         },
-        "sourceDeclaration" : {
+        "baseDeclaration": {
+            "begin": "@base",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.rulewerk"
+                }
+            },
+            "patterns": [{ "include": "#IRIREF" }],
+            "end": ".",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.statement.end.rulewerk"
+                }
+            }
+        },
+
+        "sourceDeclaration": {
             "begin": "@source",
             "beginCaptures": {
                 "0": {
