@@ -105,7 +105,7 @@
             ]
         },
         "atom_negation": {
-            "name": "keyword.operator.rulewerk.negation",
+            "name": "keyword.control.rulewerk.negation",
             "match": "~"
         },
 
