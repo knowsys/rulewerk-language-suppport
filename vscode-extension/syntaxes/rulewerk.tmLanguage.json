@@ -23,7 +23,7 @@
             "name": "comment.line.percentage",
             "match": "%(.)*\n"
         },
-        
+
         "prefixDeclaration": {
             "begin": "@prefix",
             "beginCaptures": {
