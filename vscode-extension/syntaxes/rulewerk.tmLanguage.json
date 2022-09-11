@@ -3,39 +3,74 @@
     "name": "Rulewerk Datalog",
     "patterns": [
         {
-            "include": "#head"
+            "include": "#lineComment"
         },
         {
-            "include": "#body"
+            "include": "#atom"
+        },
+        {
+            "include": "#baseDeclaration"
+        },
+        {
+            "include": "#prefixDeclaration"
+        },
+        {
+            "include": "#sourceDeclaration"
         }
     ],
     "repository": {
-        "head": {
-            "name": "meta.structure.head",
-            "begin": "^",
-            "end": ":",
-            "patterns": [
-                {
-                    "include": "#atom"
-                },
-                {
-                    "include": "#comma"
-                }
-            ]
+        "lineComment": {
+            "name": "comment.line.percentage",
+            "match": "%(.)*\n"
         },
-        "body": {
-            "name": "meta.structure.body",
-            "begin": "-",
-            "end": "\\.",
-            "patterns": [
-                {
-                    "include": "#atom"
-                },
-                {
-                    "include": "#comma"
+
+        "prefixDeclaration": {
+            "begin": "@prefix",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.rulewerk"
                 }
-            ]
+            },
+            "patterns": [{ "include": "#IRIREF" }],
+            "end": ".",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.statement.end.rulewerk"
+                }
+            }
         },
+
+        "baseDeclaration": {
+            "begin": "@base",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.rulewerk"
+                }
+            },
+            "patterns": [{ "include": "#IRIREF" }],
+            "end": ".",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.statement.end.rulewerk"
+                }
+            }
+        },
+
+        "sourceDeclaration": {
+            "begin": "@source",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.rulewerk"
+                }
+            },
+            "end": ".",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.statement.end.rulewerk"
+                }
+            }
+        },
+
         "atom": {
             "name": "meta.structure.atom",
             "patterns": [
@@ -70,13 +105,31 @@
             ]
         },
         "atom_negation": {
-            "name": "keyword.operator.rulewerk.negation",
+            "name": "keyword.control.rulewerk.negation",
             "match": "~"
         },
+
         "predicate_name": {
+            "patterns": [
+                {
+                    "include": "#pred_name"
+                },
+                {
+                    "include": "#IRIREF"
+                }
+            ]
+        },
+
+        "IRIREF": {
+            "name": "entity.name.function.rulewerk",
+            "match": "<([^><\"{}^\\|`\u0000-\u0020])*>"
+        },
+
+        "pred_name": {
             "name": "entity.name.function.rulewerk",
             "match": "[a-zA-Z][a-zA-Z0-9]*"
         },
+
         "predicate_arguments": {
             "name": "meta.function.parameters.rulewerk",
             "begin": "\\(",
@@ -121,24 +174,12 @@
             ]
         },
         "existential_variable": {
-            "patterns": [
-                {
-                    "include": "#existential_marker"
-                },
-                {
-                    "include": "#variable_name"
-                }
-            ]
+            "name": "keyword.control.rulewerk.existential",
+            "match": "\\![a-zA-Z][a-zA-Z0-9]*"
         },
         "universal_variable": {
-            "patterns": [
-                {
-                    "include": "#universal_marker"
-                },
-                {
-                    "include": "#variable_name"
-                }
-            ]
+            "name": "variable.rulewerk",
+            "match": "\\?[a-zA-Z][a-zA-Z0-9]*"
         },
         "existential_marker": {
             "name": "keyword.operator.rulewerk.existential",
@@ -153,9 +194,13 @@
             "match": "[a-zA-Z][a-zA-Z0-9]*"
         },
         "ground_term": {
+            "name": "constant.rulewerk",
             "patterns": [
                 {
                     "include": "#numeric_literal"
+                },
+                {
+                    "include": "#IRIREF"
                 }
             ]
         },
