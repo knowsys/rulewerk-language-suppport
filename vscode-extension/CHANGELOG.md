@@ -6,9 +6,9 @@
 
 -   Enhanced syntax highlighting (see [#2](https://github.com/knowsys/rulewerk-language-suppport/issues/2))
     -   comments
-    -   @base keyword
-    -   @prefix keyword
-    -   @source keyword
+    -   `@base` keyword
+    -   `@prefix` keyword
+    -   `@source` keyword
     -   IRIs
     -   improved variable name highlighting
 
