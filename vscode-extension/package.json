@@ -2,7 +2,7 @@
     "name": "vscode-rulewerk",
     "displayName": "Rulewerk",
     "description": "Rulewerk language support",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "publisher": "org-semanticweb-rulewerk-language",
     "repository": {
         "type": "git",
