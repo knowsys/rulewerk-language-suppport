@@ -19,7 +19,7 @@ This VS Code extension provides language support for [Rulewerk rule language](ht
 Overview of extension settings (see the settings page of your editor for additional information):
 
 -   `rulewerk.rulewerkClientPath`
-    -   Path to an executable `org.semanticweb.rulewerk-client` `.jar` file. Used for reasoning over Rulewerk files in the integrated [Rulewerk interactive shell](https://github.com/knowsys/rulewerk/wiki/Standalone-client/#rulewerk-interactive-shell) terminal. Defaults to the [Rulewerk client jar](https://github.com/knowsys/rulewerk/releases/download/v0.8.0/rulewerk-client-0.8.0.jar) shipped by the extension, compatible with [Rulewerk](https://github.com/knowsys/rulewerk) version `v0.8.0`.
+    -   Path to an executable `org.semanticweb.rulewerk-client` `.jar` file. Used for reasoning over Rulewerk files in the integrated [Rulewerk interactive shell](https://github.com/knowsys/rulewerk/wiki/Standalone-client/#rulewerk-interactive-shell) terminal. Defaults to the [Rulewerk client jar](https://github.com/knowsys/rulewerk/releases/download/v0.9.0/rulewerk-client-0.9.0.jar) shipped by the extension, compatible with [Rulewerk](https://github.com/knowsys/rulewerk) version `v0.9.0`.
 -   `rulewerk.javaPath`
     -   Path to Java runtime executable. This setting can be used if the directory containing the `java` executable is not in the `PATH` environment variable.
 
